@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مسار الترفيهي</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(to bottom, #dfe6e9, #b2bec3);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      direction: rtl;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      background-color: #fff;
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      text-align: right;
+      margin-bottom: 5px;
+      color: #34495e;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #0a3d62;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #074176;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 13px;
+      color: #636e72;
+    }
+
+    .footer a {
+      color: #0a3d62;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>منصة مسار الترفيهية</h1>
+    <form onsubmit="return fakeLogin()">
+      <label for="massar">رقم مسار</label>
+      <input type="text" id="massar" placeholder="مثلاً: Y12345678" required>
+
+      <label for="password">كلمة السر</label>
+      <input type="password" id="password" placeholder="********" required>
+
+      <button type="submit">تسجيل الدخول</button>
+    </form>
+    <div class="footer">
+      <p>هذا الموقع للتسلية فقط. مستوحى من <a href="https://massarservice.men.gov.ma" target="_blank">مسار الرسمي</a></p>
+    </div>
+  </div>
+
+  <script>
+    function fakeLogin() {
+      const user = document.getElementById('massar').value;
+      alert("أهلاً " + user + " 😄\nهذه منصة ترفيهية فقط!");
+      return false; // يمنع الانتقال لأي صفحة حقيقية
+    }
+  </script>
+</body>
+</html>
