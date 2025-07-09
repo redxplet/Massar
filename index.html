@@ -1,49 +1,60 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>مسار الترفيهي</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>تسجيل الدخول - منصة مسار الترفيهية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      background: linear-gradient(to bottom, #dfe6e9, #b2bec3);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      direction: rtl;
       margin: 0;
       padding: 0;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(to bottom right, #e0eafc, #cfdef3);
+      direction: rtl;
     }
 
-    .container {
-      background-color: #fff;
+    .login-container {
       max-width: 400px;
-      margin: 100px auto;
-      padding: 30px;
+      margin: 80px auto;
+      background-color: #ffffff;
+      padding: 40px 30px;
       border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     }
 
-    h1 {
-      color: #2c3e50;
-      margin-bottom: 20px;
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #0a3d62;
     }
 
     label {
+      font-weight: 600;
       display: block;
-      text-align: right;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
       color: #34495e;
-      font-weight: bold;
     }
 
-    input {
+    input[type="text"],
+    input[type="password"] {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
+      padding: 12px;
       border: 1px solid #ccc;
       border-radius: 6px;
-      font-size: 14px;
+      margin-bottom: 20px;
+      font-size: 15px;
+      transition: border-color 0.3s;
+    }
+
+    input:focus {
+      border-color: #0a3d62;
+      outline: none;
     }
 
     button {
@@ -55,6 +66,7 @@
       border: none;
       border-radius: 6px;
       cursor: pointer;
+      font-weight: 600;
       transition: background-color 0.3s ease;
     }
 
@@ -63,43 +75,59 @@
     }
 
     .footer {
-      margin-top: 30px;
+      text-align: center;
+      margin-top: 25px;
       font-size: 13px;
-      color: #636e72;
+      color: #777;
     }
 
     .footer a {
       color: #0a3d62;
       text-decoration: none;
+      font-weight: bold;
     }
 
     .footer a:hover {
       text-decoration: underline;
     }
+
+    @media (max-width: 480px) {
+      .login-container {
+        margin: 40px 20px;
+        padding: 30px 20px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>منصة مسار الترفيهية</h1>
-    <form onsubmit="return fakeLogin()">
+  <div class="login-container">
+    <h2>تسجيل الدخول إلى منصة مسار</h2>
+    <form onsubmit="return redirectToHome()">
       <label for="massar">رقم مسار</label>
-      <input type="text" id="massar" placeholder="مثلاً: Y12345678" required>
+      <input type="text" id="massar" name="massar" placeholder="مثل: Y12345678" required />
 
-      <label for="password">كلمة السر</label>
-      <input type="password" id="password" placeholder="********" required>
+      <label for="password">كلمة المرور</label>
+      <input type="password" id="password" name="password" placeholder="********" required />
 
       <button type="submit">تسجيل الدخول</button>
     </form>
     <div class="footer">
-      <p>هذا الموقع للتسلية فقط. مستوحى من <a href="https://massarservice.men.gov.ma" target="_blank">مسار الرسمي</a></p>
+      <p>نسخة ترفيهية مستوحاة من <a href="https://massarservice.men.gov.ma" target="_blank">مسار الرسمية</a></p>
     </div>
   </div>
 
   <script>
-    function fakeLogin() {
-      const user = document.getElementById('massar').value;
-      alert("أهلاً " + user + " 😄\nهذه منصة ترفيهية فقط!");
-      return false; // يمنع الانتقال لأي صفحة حقيقية
+    function redirectToHome() {
+      const username = document.getElementById('massar').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      // يمكن إضافة تحقق بسيط لاحقًا
+      if (username && password) {
+        window.location.href = "home.html";
+      } else {
+        alert("يرجى ملء جميع الحقول.");
+      }
+      return false;
     }
   </script>
 </body>
